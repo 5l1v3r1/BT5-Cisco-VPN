@@ -1,0 +1,44 @@
+#!/bin/bash
+#=================================================
+#Check to ensure root
+#=================================================
+clear
+WHOAMI=`id | sed -e 's/(.*//'`
+if [ "$WHOAMI" != "uid=0" ] ; then
+        echo "Sorry, you need super user access to run this script."
+        exit 1
+fi
+
+echo -e "========================================================="
+echo -e "BT5 Cisco VPN Installer"
+echo -e "========================================================="
+echo ""
+echo -e "Setting up folders...\n"
+echo "\n"
+mkdir BT5-Cisco-VPN
+cd BT5-Cisco-VPN
+INSTALLDIR=pwd
+echo -e "Getting needed files...\n"
+echo ""
+wget www.hackermommy.com/vpnclient-linux-x86_64-4.8.02.0030-k9.tar.gz
+wget www.hackermommy.com/BT5-CiscoVPN.patch
+echo ""
+echo -e "Extracting Files...\n"
+echo ""
+tar xf vpnclient-linux-x86_64-4.8.02.0030-k9.tar.gz
+echo ""
+echo -e "Ensuring Kernel Sources are prepared...\n"
+echo ""
+prepare-kernel-sources
+cd /usr/src/linux
+cp -rf include/generated/* include/linux
+cd $INSTALLDIR/vpnclient
+echo ""
+echo -e "Applying Patches...\n"
+echo ""
+patch < ../BT5-CiscoVPN.patch
+echo ""
+echo -e "Compiling and installing Cisco VPN. Please be patient and answer all on screen questions.\n"
+echo ""
+./vpn_install
+

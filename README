@@ -1,3 +1,22 @@
+======================================================
+======================================================
+This script is to install the Cisco VPN client for linux
+on the Backtrack 5 distrobution. This is all licensed 
+under the GPLv3 and is maintained by James Luther.
+
+Recently during a pentest I had to connect to the systems
+that were being tested by using a Cisco VPN which only
+supported certificate based authentication. This normally
+isn't an issue but I use a custom build of BT5 during
+penetration tests unless we find something specific that 
+we want to target which then we move on to one of the 
+special/specific linux builds. Either way I couldn't vpn
+from the pentesting workstation. Initially I used 
+proxychains to make my tools available then I broke down
+and did this. I certainly hope it saves some of you time
+and effort.  Enjoy!
+
+
 =======================================================
 Installing Cisco VPN Client in BT5 R3
 =======================================================
@@ -6,9 +25,8 @@ Installing Cisco VPN Client in BT5 R3
 	1a. Extract tar and verify tar contents:
 		vpnclient-linux-x86_64-4.8.02.0030-k9.tar.gz
 		ciscovpn-bt5.patch
-		vpninstaller.sh
 
-2. Run vpninstaller.sh
+2. Run VPN-Installer script.
 
 3. Import user certificates.
 	3a. The only certificate needed is the DS p12

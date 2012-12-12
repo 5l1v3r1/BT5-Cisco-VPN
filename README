@@ -2,7 +2,7 @@
 Installing Cisco VPN Client in BT5 R3
 =======================================================
 
-1. Copy Cisco-VPN.tar from TS13 Pentesting site
+1. Clone this repository on your local machine.
 	1a. Extract tar and verify tar contents:
 		vpnclient-linux-x86_64-4.8.02.0030-k9.tar.gz
 		ciscovpn-bt5.patch
